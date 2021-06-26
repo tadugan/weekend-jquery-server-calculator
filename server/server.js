@@ -1,15 +1,15 @@
 // TODO: requirements (unmarked), stretch goals (stretch.), optional (opt.)
 //      Project Setup:
-//          Create server file structure
-//          Create basic HTML doc
-//          Link files in HTML head
+//          * Create server file structure
+//          * Create basic HTML doc
+//          * Link files in HTML head
 //      Server Setup:
 //          install express
 //          setup GET and POST listeners (with response!)
 //          setup AJAX test calls in client.js
 //      Client/DOM:
-//          create input fields
-//          create math operation and submit buttons
+//          * create input fields
+//          * create math operation and submit buttons
 //              stretch. verify that input fields are not empty
 //          POST math equation inputs to server
 //          request calculation history from server (via GET)
@@ -34,4 +34,18 @@
 //
 //      Notes: Data may come as a string, use Number() just incase...
 
+const express = require('express');
 
+const app = express();
+const PORT = 5000;
+
+// Static file server
+app.use(express.static('server/public'));
+// body parser
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json);
+
+// start the server
+app.listen(PORT, () => {
+    console.log('listening on port:', PORT);
+});
