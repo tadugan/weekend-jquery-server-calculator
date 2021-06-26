@@ -42,17 +42,16 @@ function getHistory() {
 
 function submitEquation() {
     console.log('in submitEquation');
-    // capture inputs
-
+    // TODO: Check if inputs are all filled in
     // Ajax to send a POST request to server
     $.ajax({
         method: 'POST',
         url: '/calculate',
         data: {
             equationData: {
-                number1: 0,
-                number2: 0,
-                operator: ''
+                number1: $('#number1').val(),
+                number2: $('#number2').val(),
+                operator: inputOperator
             }
         }
     })
