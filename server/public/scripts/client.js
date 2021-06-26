@@ -52,6 +52,10 @@ function getHistory() {
 function submitEquation() {
     console.log('in submitEquation');
     // TODO: Check if inputs are all filled in
+    if (areInputsEmpty()) {
+        alert('please fill inputs');
+        return;
+    }
     // Ajax to send a POST request to server
     $.ajax({
         method: 'POST',
@@ -113,5 +117,14 @@ function displayAnswer(equationArray) {
     let answerEl = $('#theAnswer');
     answerEl.empty();
     answerEl.append(`The answer is: ${equationArray[equationArray.length - 1].answer}`);
+    }
+}
+
+function areInputsEmpty() {
+    if ($('#number1').val() == false || $('#number2').val() == false || inputOperator === '') {
+        return true;
+    }
+    else {
+        return false;
     }
 }

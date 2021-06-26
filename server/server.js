@@ -11,16 +11,15 @@
 //          * create input fields
 //          * create math operation and submit buttons
 //              stretch. verify that input fields are not empty
-//          POST math equation inputs to server
-//          request calculation history from server (via GET)
-//          loop through history data
-//          display history on the DOM
+//          * POST math equation inputs to server
+//          * request calculation history from server (via GET)
+//          * display history on the DOM
 //      Server-side Logic
-//          create function to process math equations based on user input, send OK message
-//          evaluate equation, record response
-//          add response to equation history array
-//          setup GET response to pull actual equation results
-//          setup GET response for equation history
+//          * create function to process math equations based on user input, send OK message
+//          * evaluate equation, record response
+//          * add response to equation history array
+//          * setup GET response to pull actual equation results
+//          * setup GET response for equation history
 //          
 //      What is the process/story for how the page works when it loads?
 //          Page loads
