@@ -26,6 +26,8 @@ function onReady() {
 // Variable stores selected operator
 let inputOperator = '';
 
+// variable "switch" to see if any equations have been submitted on this page load
+let submissions = 0;
 
 // function to make a GET request for the calculation history
 function getHistory() {
@@ -37,6 +39,7 @@ function getHistory() {
     })
     .then(function (response) {
         console.log(response);
+        displayAnswer(response);
         displayHistory(response);
     })
     .catch(function (error) {
@@ -68,7 +71,8 @@ function submitEquation() {
     .catch(function (error) {
         console.log('Error:', error);
     });
-    // display answer on the DOM
+    // add 1 to submissions for this page load
+    submissions++;
     // Update answers history on the dom
     getHistory();
 }
@@ -86,12 +90,28 @@ function clearInputs() {
     inputOperator = '';
 }
 
+// displays all previous answer stored on the servee and appends them to the <ul>
 function displayHistory(equationArray) {
     console.log('in displayHistory');
-    let el = $('#equationHistory');
-    el.empty();
+    let historyEl = $('#equationHistory');
+    historyEl.empty();
     // loop through each past answer and append it to DOM equation history list
     for (let pastEquation of equationArray) {
-        el.append(`<li>${pastEquation.number1} ${pastEquation.operator} ${pastEquation.number2} = ${pastEquation.answer}</li>`);
+        historyEl.prepend(`<li>${pastEquation.number1} ${pastEquation.operator} ${pastEquation.number2} = ${pastEquation.answer}</li>`);
+    }
+}
+
+// displays the answer to the last submitted equation
+function displayAnswer(equationArray) {
+    if (equationArray.length < 1) {
+        return;
+    }
+    else if (submissions < 1) {
+        return;
+    }
+    else {
+    let answerEl = $('#theAnswer');
+    answerEl.empty();
+    answerEl.append(`The answer is: ${equationArray[equationArray.length - 1].answer}`);
     }
 }
