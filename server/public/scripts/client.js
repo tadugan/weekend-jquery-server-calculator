@@ -37,6 +37,7 @@ function getHistory() {
     })
     .then(function (response) {
         console.log(response);
+        displayHistory(response);
     })
     .catch(function (error) {
         console.log('Error:', error);
@@ -67,6 +68,9 @@ function submitEquation() {
     .catch(function (error) {
         console.log('Error:', error);
     });
+    // display answer on the DOM
+    // Update answers history on the dom
+    getHistory();
 }
 
 
@@ -80,4 +84,14 @@ function changeOperator(symbol) {
 function clearInputs() {
     $('.inputField').val('');
     inputOperator = '';
+}
+
+function displayHistory(equationArray) {
+    console.log('in displayHistory');
+    let el = $('#equationHistory');
+    el.empty();
+    // loop through each past answer and append it to DOM equation history list
+    for (let pastEquation of equationArray) {
+        el.append(`<li>${pastEquation.number1} ${pastEquation.operator} ${pastEquation.number2} = ${pastEquation.answer}</li>`);
+    }
 }

@@ -80,7 +80,7 @@ function calculateEquation(equationObject) {
 // LISTENERS
 // ** GET listener for getting calculation history **
 app.get('/history', (req, res) => {
-    res.sendStatus(200);
+    res.send(answerHistory);
     console.log('Sending response from listener GET /history');
 });
 
