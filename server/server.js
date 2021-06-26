@@ -39,12 +39,42 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 
-
 // Static file server
 app.use(express.static('server/public'));
 // body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Array to store objects with answers
+const answerHistory = [];
+
+
+// calculate answer to equation, add new answer key and value, appends it to answerHistory Array
+function calculateEquation(equationObject) {
+    let answer = 0;
+    switch (equationObject.operator) {
+        case '+':
+        equationObject.answer = Number(equationObject.number1) + Number(equationObject.number2)
+            break;
+        
+        case '-':
+        equationObject.answer = Number(equationObject.number1) - Number(equationObject.number2)
+        break;
+
+        case '*':
+        equationObject.answer = Number(equationObject.number1) * Number(equationObject.number2)
+        break;
+
+        case '/':
+        equationObject.answer = Number(equationObject.number1) / Number(equationObject.number2)
+        break;
+
+        default:
+            console.log('no operator found');
+            break;
+    }
+    answerHistory.push(equationObject);
+}
 
 
 // LISTENERS
@@ -58,9 +88,9 @@ app.get('/history', (req, res) => {
 app.post('/calculate', (req, res) => {
     console.log('sending answers back');
     let equation = req.body.equationData;
-    // TODO: Calculate answer here
-    // TODO: Replace sendStatus with send when We are actually sending the answer
-    console.log(equation);
+    // calculate the answer to the equation, add it to answerHistory array
+    calculateEquation(equation);
+    console.log(answerHistory);
     res.sendStatus(201);
 });
 

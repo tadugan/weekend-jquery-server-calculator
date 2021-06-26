@@ -23,6 +23,7 @@ function onReady() {
 // Variable stores selected operator
 let inputOperator = '';
 
+
 // function to make a GET request for the calculation history
 function getHistory() {
     console.log('in getHistory');
@@ -40,6 +41,7 @@ function getHistory() {
 }
 
 
+// function to make a POST request to calculate the inputs
 function submitEquation() {
     console.log('in submitEquation');
     // TODO: Check if inputs are all filled in
@@ -57,6 +59,7 @@ function submitEquation() {
     })
     .then(function (response) {
         console.log(response);
+        clearInputs();
     })
     .catch(function (error) {
         console.log('Error:', error);
@@ -68,4 +71,10 @@ function submitEquation() {
 function changeOperator(symbol) {
     inputOperator = symbol;
     console.log('input operator is now', symbol);
+}
+
+// function to clear the input fields
+function clearInputs() {
+    $('.inputField').val('');
+    inputOperator = '';
 }
