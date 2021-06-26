@@ -5,8 +5,23 @@ function onReady() {
     getHistory();
     // listener for submit/= button click
     $('#submitBtn').on('click', submitEquation);
+    $('#plusOperator').on('click', function() {
+        changeOperator('+')
+    });
+    $('#minusOperator').on('click', function() {
+        changeOperator('-')
+    });
+    $('#multiplyOperator').on('click', function() {
+        changeOperator('*')
+    });
+    $('#divideOperator').on('click', function() {
+        changeOperator('/')
+    });
 }
 
+
+// Variable stores selected operator
+let inputOperator = '';
 
 // function to make a GET request for the calculation history
 function getHistory() {
@@ -27,6 +42,8 @@ function getHistory() {
 
 function submitEquation() {
     console.log('in submitEquation');
+    // capture inputs
+
     // Ajax to send a POST request to server
     $.ajax({
         method: 'POST',
@@ -45,4 +62,11 @@ function submitEquation() {
     .catch(function (error) {
         console.log('Error:', error);
     });
+}
+
+
+// function to set the inputOperator variable to the vaule of the chosen button
+function changeOperator(symbol) {
+    inputOperator = symbol;
+    console.log('input operator is now', symbol);
 }
