@@ -9,16 +9,16 @@ function onReady() {
     $('#clearBtn').on('click', clearInputs);
     // listeners to set the input operator when a button is clicked
     $('#plusOperator').on('click', function() {
-        changeOperator('+')
+        changeOperator('+');
     });
     $('#minusOperator').on('click', function() {
-        changeOperator('-')
+        changeOperator('-');
     });
     $('#multiplyOperator').on('click', function() {
-        changeOperator('*')
+        changeOperator('*');
     });
     $('#divideOperator').on('click', function() {
-        changeOperator('/')
+        changeOperator('/');
     });
 }
 
