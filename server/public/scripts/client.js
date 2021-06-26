@@ -5,6 +5,9 @@ function onReady() {
     getHistory();
     // listener for submit/= button click
     $('#submitBtn').on('click', submitEquation);
+    // listener to clear inputs when C is clicked
+    $('#clearBtn').on('click', clearInputs);
+    // listeners to set the input operator when a button is clicked
     $('#plusOperator').on('click', function() {
         changeOperator('+')
     });
