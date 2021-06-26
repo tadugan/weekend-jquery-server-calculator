@@ -4,9 +4,9 @@
 //          * Create basic HTML doc
 //          * Link files in HTML head
 //      Server Setup:
-//          install express
-//          setup GET and POST listeners (with response!)
-//          setup AJAX test calls in client.js
+//          * install express
+//          * setup GET and POST listeners (with response!)
+//          * setup AJAX test calls in client.js
 //      Client/DOM:
 //          * create input fields
 //          * create math operation and submit buttons
@@ -39,11 +39,30 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 
+
 // Static file server
 app.use(express.static('server/public'));
 // body parser
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json);
+app.use(express.json());
+
+
+// LISTENERS
+// ** GET listener for getting calculation history **
+app.get('/history', (req, res) => {
+    res.sendStatus(200);
+    console.log('Sending response from listener GET /history');
+});
+
+// ** POST listener to receive calculation inputs, and return answer **
+app.post('/calculate', (req, res) => {
+    console.log('sending answers back');
+    let equation = req.body.equationData;
+    // TODO: Calculate answer here
+    // TODO: Replace sendStatus with send when We are actually sending the answer
+    console.log(equation);
+    res.sendStatus(201);
+});
 
 // start the server
 app.listen(PORT, () => {
