@@ -20,14 +20,18 @@ function onReady() {
     $('#divideOperator').on('click', function() {
         changeOperator('/');
     });
+    // listener to highlight selected operator (change CSS)
+    $('.inputArea').on('click', 'button.opBtn', highlightOperator);
 }
 
 
 // Variable stores selected operator
 let inputOperator = '';
 
+
 // variable "switch" to see if any equations have been submitted on this page load
 let submissions = 0;
+
 
 // function to make a GET request for the calculation history
 function getHistory() {
@@ -88,11 +92,14 @@ function changeOperator(symbol) {
     console.log('input operator is now', symbol);
 }
 
+
 // function to clear the input fields
 function clearInputs() {
     $('.inputField').val('');
     inputOperator = '';
+    clearHighlight();
 }
+
 
 // displays all previous answer stored on the servee and appends them to the <ul>
 function displayHistory(equationArray) {
@@ -104,6 +111,7 @@ function displayHistory(equationArray) {
         historyEl.prepend(`<li>${pastEquation.number1} ${pastEquation.operator} ${pastEquation.number2} = ${pastEquation.answer}</li>`);
     }
 }
+
 
 // displays the answer to the last submitted equation
 function displayAnswer(equationArray) {
@@ -120,6 +128,8 @@ function displayAnswer(equationArray) {
     }
 }
 
+
+// function to check if inputs are empty
 function areInputsEmpty() {
     if ($('#number1').val() == false || $('#number2').val() == false || inputOperator === '') {
         return true;
@@ -127,4 +137,18 @@ function areInputsEmpty() {
     else {
         return false;
     }
+}
+
+
+// function to highlight the button of the selected operator
+function highlightOperator() {
+    // remove highlight from previous operator
+    clearHighlight();
+    $(this).addClass('selectedOperator');
+}
+
+
+// removes selectedOperator class from all opBtn class <buttons>
+function clearHighlight() {
+    $('.opBtn').removeClass('selectedOperator');
 }
