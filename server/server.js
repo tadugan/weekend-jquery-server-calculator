@@ -40,6 +40,11 @@
 //              4. Get History Again
 //
 //      Notes: Data may come as a string, use Number() just incase...
+// 
+//      Known bugs:
+//          TODO: decimal calculations are slightly inaccurate, need to figure out .toFixed??
+//          TODO: Calculator Display resizes when number is too big. It works it's just ugly.
+//          TODO: If operator is chosen first, you cannot set num1
 
 const express = require('express');
 

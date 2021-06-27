@@ -16,17 +16,49 @@
     <main>
         <section class="inputArea">
             <h2>Calculator</h2>
-                <input class="inputField" type="number" placeholder="enter a number" id="number1">
+                <!-- <input class="inputField" type="number" placeholder="enter a number" id="number1">
                 <button class="opBtn" id="plusOperator">+</button>
                 <button class="opBtn" id="minusOperator">-</button>
                 <button class="opBtn" id="multiplyOperator">*</button>
                 <button class="opBtn" id="divideOperator">/</button>
                 <input class="inputField" type="number" placeholder="enter a number" id="number2">
                 <button id="submitBtn">=</button>
-                <button id="clearBtn">C</button>
+                <button id="clearBtn">C</button> -->
+                <table>
+                    <tr>
+                        <td id="calcDisplay" colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calcBtn numberBtn" id="7Btn">7</button></td>
+                        <td><button class="calcBtn numberBtn" id="8Btn">8</button></td>
+                        <td><button class="calcBtn numberBtn" id="9Btn">9</button></td>
+                        <td><button class="calcBtn opBtn" id="plusOperator">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calcBtn numberBtn" id="4Btn">4</button></td>
+                        <td><button class="calcBtn numberBtn" id="5Btn">5</button></td>
+                        <td><button class="calcBtn numberBtn" id="6Btn">6</button></td>
+                        <td><button class="calcBtn opBtn" id="minusOperator">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calcBtn numberBtn" id="1Btn">1</button></td>
+                        <td><button class="calcBtn numberBtn" id="2Btn">2</button></td>
+                        <td><button class="calcBtn numberBtn" id="3Btn">3</button></td>
+                        <td><button class="calcBtn opBtn" id="multiplyOperator">*</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calcBtn numberBtn" id="0Btn">0</button></td>
+                        <td><button class="calcBtn numberBtn" id="decimalBtn">.</button></td>
+                        <td id="clearBtn"><button class="calcBtn">C</button></td>
+                        <td><button class="calcBtn opBtn" id="divideOperator">/</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button class="calcBtn" id="submitBtn">=</button></td>
+                    </tr>
+                </table>
         </section>
         <section class="historyDisplay">
-            <h3 id="theAnswer">The answer is:</h3>
+            <br>
             <button id="deleteHistory">Delete Equation History</button>
             <h4>Equation History</h4>
             <ul id="equationHistory">
