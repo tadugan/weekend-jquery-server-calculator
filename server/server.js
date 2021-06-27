@@ -23,6 +23,8 @@
 //      Stretch Goals
 //          * verify that input fields are not empty
 //          Allow user to make a DELETE to delete equation history
+//              Update Interface to add delete history button
+//              add DELETE request when button is pressed
 //          Convert the interface to look and behave like a calculator
 //          Allow user to click on an entry in the history list to re-run that calculation
 //          Deploy to Heroku
@@ -84,6 +86,12 @@ function calculateEquation(equationObject) {
 }
 
 
+// delete the equation history on the server
+function deleteEquationHistory() {
+    answerHistory.splice(0, answerHistory.length);
+}
+
+
 // LISTENERS
 // ** GET listener for getting calculation history **
 app.get('/history', (req, res) => {
@@ -100,6 +108,13 @@ app.post('/calculate', (req, res) => {
     calculateEquation(equation);
     console.log(answerHistory);
     res.sendStatus(201);
+});
+
+
+// ** DELETE listener to receive request to delete equation history
+app.delete('/history', (req, res) => {
+    res.sendStatus(201);
+    deleteEquationHistory();
 });
 
 
