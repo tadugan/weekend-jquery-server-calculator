@@ -1,13 +1,12 @@
 body {
     margin: 10px;
+    text-align: center;
 }
 
 table {
     border: 1px solid black;
-}
-
-table {
     border-collapse: collapse;
+    margin: auto;
 }
 
 td {
